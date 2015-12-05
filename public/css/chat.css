@@ -1,0 +1,22 @@
+.upper{
+    text-transform: uppercase;
+}
+.sysmess{
+    color:#418CFF;
+}
+.user_name{
+    color:red;
+}
+.its-you{
+    color:#1800CC;
+}
+.panel-primary {
+    position: fixed;
+    max-width: 310px;
+}
+@media only all and (max-width: 995px) {
+    .panel-primary{
+        position: static;
+        max-width: 100%;
+    }
+}

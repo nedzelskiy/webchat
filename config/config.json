@@ -1,0 +1,8 @@
+{
+    "domain":"192.168.1.126",
+    "port":"8080",
+    "defaultLanguage":"ru",
+    "way_to_views":"/public/views",
+    "views_format":"ejs",
+    "db-cnn":"mongodb://localhost/webchat"
+}

@@ -1,0 +1,11 @@
+{
+    "title":"Pavel Nedzelskiy: Web Chat",
+    "name_not_unique":"This user already exsist!",
+    "password_wrong":"Incorrect password for an existing user",
+    "connected":"Connected",
+    "disconnected":"Disconnected",
+    "welcome":"Welcome to chat",
+    "user":"User",
+    "admin":"Admin",
+    "active": "Active From"
+}

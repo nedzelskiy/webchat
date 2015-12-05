@@ -1,0 +1,29 @@
+{
+  "name": "webchat",
+  "version": "1.0.0",
+  "description": "Web chat for many users",
+  "main": "_index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chat",
+    "nodejs",
+    "wesockets"
+  ],
+  "author": "Pavel Nedzelskiy",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "bootstrap": "^3.3.6",
+    "ejs": "2.x",
+    "express": "4.x",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
+    "mongodb": "2.x",
+    "mongoose": "4.x",
+    "nconf": "^0.8.2",
+    "slick-carousel": "^1.5.9",
+    "socket.io": "1.x"
+  }
+}

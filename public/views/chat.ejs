@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <!--[if IE]>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+        <title><%= title; %></title>
+        <link href="/reset.css" rel="stylesheet" />
+        <link href="/bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="/chat.css" rel="stylesheet" />
+    </head>
+    <body style="font-family:Verdana">
+        <script type="text/template" id="user-table-template">
+            <%- userTableTemplate; %>
+        </script>
+        <script type="text/template" id="system-message-template">
+            <%- sysMessageTemplate; %>
+        </script>
+        <script type="text/template" id="message-template">
+            <%- messageTemplate; %>
+        </script>
+        <div class="container">
+            <div class="row " style="padding-top:40px;">
+                <div class="col-md-8">
+                    <div class="panel panel-info">
+                        <div class="panel-heading upper">
+                            <%- texts.history_title; %>: <%-name%>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="media-list"></ul>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="<%= texts.placeholder_messafe_input; %>" />
+                                <input type="hidden" name="id" value="<%= id; %>" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info upper send" type="button"><%= texts.send_button; %></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading upper">
+                            <%= texts.users_online_title; %>: <span class="users_count">0</span>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="media-list">
+                                <li class="media" data-id="<%-delete_id%>">
+                                    <div class="media-body">
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="media-object img-circle" style="max-height:40px;" src="/avatars/<%= avatar; %>.png" />
+                                            </a>
+                                            <div class="media-body" >
+                                                <h5 class="its-you"><%= name; %> | <%= status; %></h5>
+                                                <small class="text-muted"><%= common.active; %>: <%= new Date();%></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/lodash/index.js"></script>
+        <script type="text/javascript" src="/chat.js"></script>
+    </body>
+</html>
