@@ -3,11 +3,18 @@
 
 ### Использованные технологии:
 - Twitter Bootstrap
-- Ejs Views
+- Ejs Server Views
 - Express Framework
 - Jquery Library
 - Lodash Client-side Template
 - Mongodb Data Base
 - Mongoose Object Document Management
-- Slick-carousel Jquery UI
+- Slick Carousel Jquery User Interface
 - Socket.io Real Time Engine
+
+### Использование:
+Настройка производится в ./config/config.json
+Обязательные настройки:
+- Domain
+- Port
+- Data Base string connection
