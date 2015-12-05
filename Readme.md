@@ -19,3 +19,6 @@
 - Domain
 - Port
 - Data Base string connection
+
+### Особенности:
+Отгрузка шаблонов и генерация html кода на клиенте
