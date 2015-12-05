@@ -2,15 +2,16 @@
 Красивый, адаптивный веб чат с аватарами на socket.io
 
 ### Использованные технологии:
+- Nodejs Server
+- Socket.io Real Time Engine
+- Mongodb Data Base
+- Mongoose Object-Document Mapping
+- Express Framework
 - Twitter Bootstrap
 - Ejs Server Views
-- Express Framework
 - Jquery Library
 - Lodash Client-side Template
-- Mongodb Data Base
-- Mongoose Object Document Management
 - Slick Carousel Jquery User Interface
-- Socket.io Real Time Engine
 
 ### Использование:
 Настройка производится в ./config/config.json
