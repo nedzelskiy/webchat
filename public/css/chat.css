@@ -10,13 +10,41 @@
 .its-you{
     color:#1800CC;
 }
-.panel-primary {
-    position: fixed;
-    max-width: 310px;
+.panel-body {
+    max-height: 400px;
+    overflow-y: scroll;
 }
-@media only all and (max-width: 995px) {
-    .panel-primary{
-        position: static;
-        max-width: 100%;
-    }
+.panel-info{
+    position: relative;
+}
+hr{
+    margin:10px 0;
+}
+.text-muted{
+    font-size:12px;
+    margin-top:5px;
+}
+#smiles {
+    font-size:0;
+    margin:0;
+    padding:0;
+    background-color:white;
+    border: 1px solid #bce8f1;
+    position:absolute;
+    width:100%;
+    max-height:300px;
+    overflow-y:scroll;
+    z-index: 2;
+}
+#smiles img{
+    width:66px;
+    height:66px;
+    margin:3px;
+    cursor:pointer;
+}
+.smile-show-btn{
+    display:inline-block;
+    height: 34px;
+    padding:2px 5px;
+    border: 1px solid #ccc;
 }

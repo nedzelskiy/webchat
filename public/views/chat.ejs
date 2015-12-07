@@ -24,7 +24,7 @@
             <%- messageTemplate; %>
         </script>
         <div class="container">
-            <div class="row " style="padding-top:40px;">
+            <div class="row " style="padding-top:10px;">
                 <div class="col-md-8">
                     <div class="panel panel-info">
                         <div class="panel-heading upper">
@@ -38,9 +38,15 @@
                                 <input type="text" class="form-control" placeholder="<%= texts.placeholder_messafe_input; %>" />
                                 <input type="hidden" name="id" value="<%= id; %>" />
                                 <span class="input-group-btn">
+                                    <button class="btn smile-show-btn"><img src="/smile.png" alt="" /></button>
                                     <button class="btn btn-info upper send" type="button"><%= texts.send_button; %></button>
                                 </span>
                             </div>
+                        </div>
+                        <div id="smiles" style="display:none">
+                            <% for(var i=0;i < smiles.length; i++) {%>
+                                <img data-name='<%=smiles[i]%>' src="/smiles/<%= smiles[i]; %>" alt=""/>
+                            <% } %>
                         </div>
                     </div>
                 </div>
