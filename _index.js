@@ -35,7 +35,8 @@ function renderChat(res, params) {
         'common': common_texts,
         'userTableTemplate':fs.readFileSync('./public/templates/userTable.ejs', "utf8"),
         'sysMessageTemplate':fs.readFileSync('./public/templates/sysMessage.ejs', "utf8"),
-        'messageTemplate':fs.readFileSync('./public/templates/message.ejs', "utf8")
+        'messageTemplate':fs.readFileSync('./public/templates/message.ejs', "utf8"),
+        'smiles':fs.readdirSync('./public/smiles/')
     };
     for (property in params)
         renderParams[property] = params[property];
@@ -69,6 +70,7 @@ io.sockets.on('connection', function(socket){
                 for (var i = 0; i < Object.keys(io.sockets.connected).length; i++) {
                     var id = Object.keys(io.sockets.connected)[i];
                     if (io.sockets.connected[id].nickname === user.name) {
+                        io.sockets.connected[id].emit('killsession',{});
                         io.sockets.connected[id].disconnect(true);
                     }
                 }
@@ -103,7 +105,7 @@ io.sockets.on('connection', function(socket){
         io.sockets.emit('message',{
             'success':true,
             'data':{
-                'mess': data.mess,
+                'mess': services.setSmilesToText(services.HTML.encode(data.mess)),
                 'date':(new Date()),
                 'name':socket.nickname,
                 'avatar':socket.avatar
@@ -218,6 +220,11 @@ app.get('/avatars/:file', function (req, res) {
         res.sendFile(__dirname + '/public/img/unknown.png');
     } else if ('png' === services.getExt(req.params.file)) {
         res.sendFile(__dirname + '/public/avatars/' + req.params.file);
+    }
+});
+app.get('/smiles/:file', function (req, res) {
+    if ('gif' === services.getExt(req.params.file)) {
+        res.sendFile(__dirname + '/public/smiles/' + req.params.file);
     }
 });
 app.get('/:file', function (req, res) {

@@ -1,9 +1,9 @@
 ## Описание:
-Красивый, адаптивный веб чат с аватарами на socket.io
+Красивый, адаптивный веб чат с аватарами и смайликами на NodeJS и Socket.io
 
 ### Использованные технологии:
 - Nodejs Server
-- Socket.io Real Time Engine
+- Socket.io Library for Real Time Engine
 - Mongodb Data Base
 - Mongoose Object-Document Mapping
 - Express Framework
@@ -21,4 +21,6 @@
 - Data Base string connection
 
 ### Особенности:
-Отгрузка шаблонов и генерация html кода на клиенте
+- Авторизация и сохранения информации в бд
+- Отгрузка шаблонов и генерация html кода на клиенте
+- Аватары и смайлы
