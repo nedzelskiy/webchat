@@ -1,5 +1,5 @@
 {
-    "domain":"192.168.1.126",
+    "domain":"localhost",
     "port":"8080",
     "defaultLanguage":"ru",
     "way_to_views":"/public/views",
