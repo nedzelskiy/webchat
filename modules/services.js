@@ -6,6 +6,8 @@ function getExt(filename) {
 }
 ;
 
+var fs = require('fs');
+
 var HTML = function () {
     var x, mnem =
             {34: "quot", 38: "amp", 39: "apos", 60: "lt", 62: "gt", 402: "fnof",
@@ -73,10 +75,24 @@ var HTML = function () {
     }
 }();
 
-function setSmilesToText(text){
-    return text.replace(/(::sm:)(.+?\.gif)/g, '<img style="max-width:66px;max-height:66px;" src="/smiles/$2" alt="" />');
+function setSmilesToText(text) {
+    return text.replace(/(::sm:)(.+?)::/g, function (a, b, c) {
+        try {
+            fs.statSync('./public/smiles/' + c + '.gif');
+            return '<img style="max-width:66px;max-height:66px;" src="/smiles/' + c + '.gif" alt="" />';
+        } catch (e) {
+            return a;
+        }
+    });
 };
 
+function trim(text) {
+    var pattern = "[\\x09\\x0A-\\x0D\\x20\\xA0\\u1680\\u180E\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000]+";
+    var trim = new RegExp("^" + pattern + "|" + pattern + "$", "g");
+    return text.replace(trim, "");
+};
+
+exports.trim = trim;
 exports.setSmilesToText = setSmilesToText;
 exports.HTML = HTML;
 exports.getExt = getExt;

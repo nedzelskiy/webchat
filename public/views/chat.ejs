@@ -28,7 +28,7 @@
                 <div class="col-md-8">
                     <div class="panel panel-info">
                         <div class="panel-heading upper">
-                            <%- texts.history_title; %>: <%-name%>
+                            [<%-name%>] <%- texts.history_title; %>
                         </div>
                         <div class="panel-body">
                             <ul class="media-list"></ul>
@@ -45,7 +45,7 @@
                         </div>
                         <div id="smiles" style="display:none">
                             <% for(var i=0;i < smiles.length; i++) {%>
-                                <img data-name='<%=smiles[i]%>' src="/smiles/<%= smiles[i]; %>" alt=""/>
+                                <img src="/smiles/<%= smiles[i]; %>" alt=""/>
                             <% } %>
                         </div>
                     </div>
@@ -56,22 +56,7 @@
                             <%= texts.users_online_title; %>: <span class="users_count">0</span>
                         </div>
                         <div class="panel-body">
-                            <ul class="media-list">
-                                <li class="media" data-id="<%-delete_id%>">
-                                    <div class="media-body">
-                                        <div class="media">
-                                            <a class="pull-left" href="#">
-                                                <img class="media-object img-circle" style="max-height:40px;" src="/avatars/<%= avatar; %>.png" />
-                                            </a>
-                                            <div class="media-body" >
-                                                <h5 class="its-you"><%= name; %> | <%= status; %></h5>
-                                                <small class="text-muted"><%= common.active; %>: <%= new Date();%></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                
-                            </ul>
+                            <ul class="media-list"></ul>
                         </div>
                     </div>
 

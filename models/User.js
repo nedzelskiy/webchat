@@ -11,6 +11,10 @@ function init(db_cnn) {
             type: String,
             default:'unknown'
         },
+        email:{
+            type: String,
+            default:''
+        },
         status: {
             type: String,
             default: 'user'
@@ -27,6 +31,10 @@ function init(db_cnn) {
             type: Date,
             default: Date.now()
         },
+//        createdAt: { 
+//            type: Date, 
+//            expires: 1
+//        },
         iteration: {
             type: Number,
             require: true

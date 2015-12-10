@@ -3,6 +3,7 @@ nconf.argv().env().file({file: './config/config.json'});
 
 var lang = nconf.get('defaultLanguage');
 var db = require('mongoose');
+var partial = require('express-partial');
 db.connect(nconf.get('db-cnn'));
 
 function init(app) {
@@ -21,6 +22,7 @@ function init(app) {
     app.use(bodyParser.urlencoded({// to support URL-encoded bodies
         extended: true
     }));
+    app.use(partial());
     return server;
 };
 

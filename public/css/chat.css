@@ -37,8 +37,8 @@ hr{
     z-index: 2;
 }
 #smiles img{
-    width:66px;
-    height:66px;
+    width:60px;
+    height:60px;
     margin:3px;
     cursor:pointer;
 }

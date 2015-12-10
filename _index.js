@@ -11,7 +11,7 @@ var User = require('./models/User').init(config.db);
 
 var services = require('./modules/services');
 var common_texts = require('./texts/' + config.lang + '/common');
-;
+
 
 function renderLogin(res, params) {
     var renderParams = {
@@ -32,14 +32,14 @@ function renderChat(res, params) {
     var texts = require('./texts/' + config.lang + '/chat');
     var renderParams = {
         'texts': texts,
-        'common': common_texts,
         'userTableTemplate':fs.readFileSync('./public/templates/userTable.ejs', "utf8"),
         'sysMessageTemplate':fs.readFileSync('./public/templates/sysMessage.ejs', "utf8"),
         'messageTemplate':fs.readFileSync('./public/templates/message.ejs', "utf8"),
         'smiles':fs.readdirSync('./public/smiles/')
     };
-    for (property in params)
-        renderParams[property] = params[property];
+    renderParams.name = params.name;
+    renderParams.title = params.title;
+    renderParams.id = params.id;
     res.render('chat', renderParams);
 };
 
@@ -86,7 +86,7 @@ io.sockets.on('connection', function(socket){
                         'date':(new Date())
                     }
                 });
-                socket.broadcast.emit('adduser',{
+                io.sockets.emit('adduser',{
                     'success':true,
                     'countUsers':Object.keys(io.sockets.connected).length,
                     'data':{
@@ -138,15 +138,18 @@ app.get('/', function (req, res) {
 });
 
 app.post('/', function (req, res) {
+    req.body.login = services.trim(req.body.login);
+    req.body.password = services.trim(req.body.password);
     if (req.body.login && req.body.password) {
         User.findOne({'name': req.body.login}, function (err, user) {
             if (user && user.checkPassword(req.body.password)) {
+                if ('unknown' !== req.body.avatar) {
+                    user.avatar = req.body.avatar;
+                    user.save();
+                }
                 renderChat(res,{
                     'name':user.name,
-                    'avatar':user.avatar,
-                    'status':common_texts[user.status],
                     'id':user._id,
-                    'delete_id':user._id,
                     'title':user.name + ': WEB CHAT'
                 });
             } else if(user){
@@ -169,10 +172,7 @@ app.post('/', function (req, res) {
                     } else {
                         renderChat(res,{
                             'name':req.body.login,
-                            'avatar':req.body.avatar,
-                            'status':common_texts[user.status],
                             'id':user._id,
-                            'delete_id':user._id,
                             'title':user.name + ': WEB CHAT'
                         });
                     }
@@ -242,6 +242,7 @@ app.get('/:file', function (req, res) {
         case 'bmp':
         case 'gif':
         case 'png':
+        case 'ico':
             res.sendFile(__dirname + '/public/img/' + req.params.file);
             break;
     }
