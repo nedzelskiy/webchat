@@ -29,12 +29,9 @@ function init(db_cnn) {
         },
         created: {
             type: Date,
-            default: Date.now()
+            default: Date.now(),
+            require: true
         },
-//        createdAt: { 
-//            type: Date, 
-//            expires: 1
-//        },
         iteration: {
             type: Number,
             require: true
@@ -61,8 +58,10 @@ function init(db_cnn) {
         return this.getHash(data) === this.hash;
     };
 
+    
+    //userSchema.index({ created: 1 }, { expireAfterSeconds : 86400 });
+    
     return db_cnn.model('User', userSchema);
-}
-;
+};
 
 exports.init = init;
