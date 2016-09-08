@@ -1,6 +1,6 @@
 {
     "domain":"localhost",
-    "port":"8080",
+    "port": "process.env.PORT",
     "defaultLanguage":"ru",
     "way_to_views":"/public/views",
     "views_format":"ejs",

@@ -7,11 +7,8 @@ db.connect(nconf.get('db-cnn'));
 
 function init(app) {
 
-    var server = app.listen(nconf.get('port'), nconf.get('domain'), function () {
-        var host = server.address().address;
-        var port = server.address().port;
-        console.log('Example app listening at http://%s:%s', host, port)
-    });
+    var server = app.listen(process.env.PORT);
+    console.log('Example app listening at port', server.address().port)
 
     app.set('views', './' + nconf.get('way_to_views'));
     app.set('view engine', nconf.get('views_format'));
